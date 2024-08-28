@@ -37,14 +37,19 @@
             <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="$ANDROID_APP_ID" />
             <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
-            <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" android:theme="@android:style/Theme.Translucent" />
+            <activity
+          android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+          android:name="com.google.android.gms.ads.AdActivity"
+          android:excludeFromRecents="true"
+          android:noHistory="true" />
+
+           <meta-data
+          android:name="com.google.android.gms.ads.DELAY_APP_MEASUREMENT_INIT"
+          android:value="true"/>
         </config-file>
 
         <source-file src="src/android" target-dir="java/io.luzh.cordova.plugin" />
         <framework src="src/android/yandexads.gradle" custom="true" type="gradleReference" />
-
-        <framework src="com.android.support:support-v4:+" />
-        <framework src="com.android.support:recyclerview-v7:27.1.1" />
 
         <resource-file src="src/android/jc.mp4" target="res/raw/jc.mp4" />
     </platform>
