@@ -11,7 +11,7 @@ import io.luzh.cordova.plugin.helpers.FeedAdsHelper
 import io.luzh.cordova.plugin.helpers.InterstitialAdsHelper
 import io.luzh.cordova.plugin.helpers.OpenAppAdsHelper
 import io.luzh.cordova.plugin.helpers.RewardedAdsHelper
-// import io.luzh.cordova.plugin.helpers.instream.InstreamAdsHelper
+import io.luzh.cordova.plugin.helpers.instream.InstreamAdsHelper
 import io.luzh.cordova.plugin.utils.Constants
 import io.luzh.cordova.plugin.utils.Constants.KEY_BANNER_AT_TOP
 import io.luzh.cordova.plugin.utils.Constants.KEY_BANNER_SIZE
@@ -54,7 +54,7 @@ class YandexAdsPlugin : CordovaPlugin() {
     private var rewardedAdsHelper: RewardedAdsHelper? = null
     private var interstitialAdsHelper: InterstitialAdsHelper? = null
     private var openAppAdsHelper: OpenAppAdsHelper? = null
-    // private var instreamAdsHelper: InstreamAdsHelper? = null
+    private var instreamAdsHelper: InstreamAdsHelper? = null
     private var feedAdsHelper: FeedAdsHelper? = null
 
     @Throws(JSONException::class)
@@ -87,9 +87,9 @@ class YandexAdsPlugin : CordovaPlugin() {
             ACTION_SHOW_OPEN_APP_ADS -> { openAppAdsHelper?.show(callbackContext); true }
 
             // Instream ads
-            // ACTION_LOAD_INSTREAM_APP_ADS -> { instreamAdsHelper?.load(callbackContext); true }
-            // ACTION_SHOW_INSTREAM_APP_ADS -> { instreamAdsHelper?.show(callbackContext); true }
-            // ACTION_HIDE_INSTREAM_APP_ADS -> { instreamAdsHelper?.hide(callbackContext); true }
+            ACTION_LOAD_INSTREAM_APP_ADS -> { instreamAdsHelper?.load(callbackContext); true }
+            ACTION_SHOW_INSTREAM_APP_ADS -> { instreamAdsHelper?.show(callbackContext); true }
+            ACTION_HIDE_INSTREAM_APP_ADS -> { instreamAdsHelper?.hide(callbackContext); true }
 
             // Feed
             ACTION_LOAD_FEED_APP_ADS -> { feedAdsHelper?.load(callbackContext); true }
@@ -110,11 +110,11 @@ class YandexAdsPlugin : CordovaPlugin() {
     }
 
     override fun onResume(multitasking: Boolean) {
-        // instreamAdsHelper?.onResume()
+        instreamAdsHelper?.onResume()
     }
 
     override fun onDestroy() {
-        // instreamAdsHelper?.onDestroy()
+        instreamAdsHelper?.onDestroy()
     }
 
     /**
@@ -126,7 +126,7 @@ class YandexAdsPlugin : CordovaPlugin() {
         val interstitialBlockId: String = args.getString(KEY_BLOCK_ID_INTERSTITIAL)
         val bannerBlockId: String = args.getString(KEY_BLOCK_ID_BANNER)
         val openAppBlockId: String = args.getString(KEY_BLOCK_ID_OPEN_APP)
-        // val instreamBlockId: String = args.getString(KEY_BLOCK_ID_INSTREAM)
+        val instreamBlockId: String = args.getString(KEY_BLOCK_ID_INSTREAM)
         val feedBlockId: String = args.getString(KEY_BLOCK_ID_FEED)
         val options = args.optJSONObject(KEY_OPTIONS)
 
@@ -134,13 +134,13 @@ class YandexAdsPlugin : CordovaPlugin() {
         val bannerSize = options.optJSONObject(KEY_BANNER_SIZE)
 
         // val intreamContentUrl = Uri.parse("android.resource://" + cordova.context.packageName + "/" + R.raw.jc).toString()
-        // val intreamContentUrl = Uri.parse("android.resource://" + cordova.context.packageName + "/").toString()
+        val intreamContentUrl = Uri.parse("android.resource://" + cordova.context.packageName + "/").toString()
 
         bannerAdsHelper = BannerAdsHelper(this, webView, bannerBlockId, bannerAtTop, bannerSize)
         rewardedAdsHelper = RewardedAdsHelper(this, webView, rewardedBlockId)
         interstitialAdsHelper = InterstitialAdsHelper(this, webView, interstitialBlockId)
         openAppAdsHelper = OpenAppAdsHelper(this, webView, openAppBlockId)
-        // instreamAdsHelper = InstreamAdsHelper(this, webView, instreamBlockId, intreamContentUrl)
+        instreamAdsHelper = InstreamAdsHelper(this, webView, instreamBlockId, intreamContentUrl)
         feedAdsHelper = FeedAdsHelper(this, webView, feedBlockId)
 
 
