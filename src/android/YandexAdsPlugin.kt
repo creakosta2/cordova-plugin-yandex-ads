@@ -2,7 +2,7 @@ package io.luzh.cordova.plugin
 
 import android.net.Uri
 import android.util.Log
-// import packagenamehere.R
+import com.radbrothers.free.jigsaw.puzzles.games.kids.adults.R
 import com.yandex.mobile.ads.common.InitializationListener
 import com.yandex.mobile.ads.common.MobileAds.initialize
 import com.yandex.mobile.ads.common.MobileAds.setUserConsent
