@@ -1,7 +1,6 @@
 package io.luzh.cordova.plugin.helpers.instream
 
 import android.view.ViewGroup
-import android.view.KeyEvent
 import androidx.core.view.contains
 import com.google.android.exoplayer2.ui.PlayerView
 import com.yandex.mobile.ads.instream.InstreamAd
@@ -55,16 +54,11 @@ internal class InstreamAdsHelper(
             val instreamAd = this.instreamAd ?: return@runOnUiThread
 
             (cordovaWebView.view as? ViewGroup)?.let { view ->
-                
-            view.isFocusable = false
-            view.isFocusableInTouchMode = false
-                
-                instreamAdView?.let { adView ->
-                    if (!view.contains(adView)) {
-                        view.addView(adView)
-                    }
-                    adView.bringToFront()
-                    adView.requestFocus()
+                instreamAdView?.let {
+                    if (!view.contains(it)) {
+                    view.addView(it)
+                    it.requestFocus() 
+                }
                 }
             }
 
@@ -84,14 +78,10 @@ internal class InstreamAdsHelper(
 
     fun hide(callbackContext: CallbackContext) {
         cordova.activity.runOnUiThread {
-            (cordovaWebView.view as? ViewGroup)?.let { view ->
-            view.removeView(instreamAdView)
-            
-            view.isFocusable = true
-            view.isFocusableInTouchMode = true
-            view.requestFocus()
-            
-            onDestroy()
+            (cordovaWebView.view as? ViewGroup)?.let {
+                it.removeView(instreamAdView)
+                cordovaWebView.view.requestFocus()
+                onDestroy()
             }
 
             callbackContext.success()
@@ -151,10 +141,8 @@ internal class InstreamAdsHelper(
             )
             isFocusable = true
             isFocusableInTouchMode = true
-            descendantFocusability = ViewGroup.FOCUS_AFTER_DESCENDANTS
         }
     }
-
 
     private fun createPlayerView(): PlayerView {
         return PlayerView(cordova.context).apply {
@@ -162,6 +150,8 @@ internal class InstreamAdsHelper(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
+            isFocusable = true
+            isFocusableInTouchMode = true
         }
     }
 
