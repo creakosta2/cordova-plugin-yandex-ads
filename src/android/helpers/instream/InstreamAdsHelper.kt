@@ -74,7 +74,6 @@ internal class InstreamAdsHelper(
                 setInstreamAdListener(eventLogger)
                 instreamAdView?.let { 
                     bind(it)
-                    it.requestFocus() 
                 }
             }
 
