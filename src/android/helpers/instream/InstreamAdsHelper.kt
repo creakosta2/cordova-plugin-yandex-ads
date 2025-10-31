@@ -69,7 +69,10 @@ internal class InstreamAdsHelper(
                 checkNotNull(contentVideoPlayer)
             ).apply {
                 setInstreamAdListener(eventLogger)
-                instreamAdView?.let { bind(it) }
+                instreamAdView?.let { 
+                    bind(it)
+                    it.requestFocus() 
+                }
             }
 
             callbackContext.success()
@@ -152,8 +155,6 @@ internal class InstreamAdsHelper(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            isFocusable = true
-            isFocusableInTouchMode = true
         }
     }
 
