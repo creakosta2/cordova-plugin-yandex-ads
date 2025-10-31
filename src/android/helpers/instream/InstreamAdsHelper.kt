@@ -64,6 +64,7 @@ internal class InstreamAdsHelper(
                     }
                     adView.requestFocus()
             }
+            }
 
             instreamAdBinder = InstreamAdBinder(
                 cordova.context,
