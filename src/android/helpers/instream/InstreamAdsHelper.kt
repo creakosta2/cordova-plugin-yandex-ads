@@ -54,12 +54,15 @@ internal class InstreamAdsHelper(
             val instreamAd = this.instreamAd ?: return@runOnUiThread
 
             (cordovaWebView.view as? ViewGroup)?.let { view ->
-                instreamAdView?.let {
-                    if (!view.contains(it)) {
-                    view.addView(it)
-                    it.requestFocus() 
-                }
-                }
+                
+                view.isFocusable = false
+                view.isFocusableInTouchMode = false
+                
+                instreamAdView?.let { adView ->
+                    if (!view.contains(adView)) {
+                        view.addView(adView)
+                    }
+                    adView.requestFocus()
             }
 
             instreamAdBinder = InstreamAdBinder(
@@ -82,10 +85,11 @@ internal class InstreamAdsHelper(
     fun hide(callbackContext: CallbackContext) {
         cordova.activity.runOnUiThread {
             (cordovaWebView.view as? ViewGroup)?.let { view ->
-            instreamAdView?.let {
-                view.removeView(it)
-                cordovaWebView.view.requestFocus()
-            }
+            view.removeView(instreamAdView)
+            
+            view.isFocusable = true
+            view.requestFocus()
+            
             onDestroy()
             }
 
