@@ -54,8 +54,11 @@ internal class InstreamAdsHelper(
             val instreamAd = this.instreamAd ?: return@runOnUiThread
 
             (cordovaWebView.view as? ViewGroup)?.let { view ->
-                instreamAdView?.let {
-                    if (!view.contains(it)) view.addView(it)
+                instreamAdView?.let { adView -> // Renamed 'it' to 'adView' for clarity
+                    if (!view.contains(adView)) {
+                        view.addView(adView)
+                    }
+                    adView.requestFocus()
                 }
             }
 
