@@ -83,7 +83,7 @@ internal class InstreamAdsHelper(
     fun hide(callbackContext: CallbackContext) {
         cordova.activity.runOnUiThread {
             (cordovaWebView.view as? ViewGroup)?.let { view ->
-            it.removeView(instreamAdView)
+            view.removeView(instreamAdView)
             
             view.isFocusable = true
             view.isFocusableInTouchMode = true
