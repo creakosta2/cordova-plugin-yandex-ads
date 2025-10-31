@@ -82,13 +82,6 @@ internal class InstreamAdsHelper(
         }
     }
 
-    override fun dispatchKeyEvent(event: KeyEvent): Boolean {
-    if (instreamAdView != null) {
-            instreamAdView.dispatchKeyEvent(event)
-            return true
-        }
-    }
-
     fun hide(callbackContext: CallbackContext) {
         cordova.activity.runOnUiThread {
             (cordovaWebView.view as? ViewGroup)?.let { view ->
