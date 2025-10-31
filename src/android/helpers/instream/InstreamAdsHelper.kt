@@ -159,6 +159,9 @@ internal class InstreamAdsHelper(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
+            isFocusable = true
+            isFocusableInTouchMode = true
+            descendantFocusability = ViewGroup.FOCUS_AFTER_DESCENDANTS
         }
     }
 
