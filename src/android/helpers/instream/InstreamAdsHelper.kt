@@ -1,6 +1,7 @@
 package io.luzh.cordova.plugin.helpers.instream
 
 import android.view.ViewGroup
+import android.view.KeyEvent
 import androidx.core.view.contains
 import com.google.android.exoplayer2.ui.PlayerView
 import com.yandex.mobile.ads.instream.InstreamAd
@@ -56,13 +57,12 @@ internal class InstreamAdsHelper(
             (cordovaWebView.view as? ViewGroup)?.let { view ->
                 
                 view.isFocusable = false
-                view.isFocusableInTouchMode = false
                 
                 instreamAdView?.let { adView ->
                     if (!view.contains(adView)) {
                         view.addView(adView)
+                        adView.requestFocus()
                     }
-                    adView.requestFocus()
             }
             }
 
