@@ -63,6 +63,7 @@ internal class InstreamAdsHelper(
                     if (!view.contains(adView)) {
                         view.addView(adView)
                     }
+                    adView.bringToFront()
                     adView.requestFocus()
                 }
             }
@@ -151,24 +152,6 @@ internal class InstreamAdsHelper(
             isFocusable = true
             isFocusableInTouchMode = true
             descendantFocusability = ViewGroup.FOCUS_AFTER_DESCENDANTS
-
-            setOnKeyListener { v, keyCode, event ->
-            if (event.action == KeyEvent.ACTION_DOWN) {
-                when (keyCode) {
-                    KeyEvent.KEYCODE_DPAD_UP,
-                    KeyEvent.KEYCODE_DPAD_DOWN,
-                    KeyEvent.KEYCODE_DPAD_LEFT,
-                    KeyEvent.KEYCODE_DPAD_RIGHT,
-                    KeyEvent.KEYCODE_DPAD_CENTER,
-                    KeyEvent.KEYCODE_ENTER -> {
-                        false
-                    }
-                    else -> false
-                }
-            } else {
-                false
-            }
-        }
         }
     }
 
