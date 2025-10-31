@@ -78,10 +78,12 @@ internal class InstreamAdsHelper(
 
     fun hide(callbackContext: CallbackContext) {
         cordova.activity.runOnUiThread {
-            (cordovaWebView.view as? ViewGroup)?.let {
-                it.removeView(instreamAdView)
+            (cordovaWebView.view as? ViewGroup)?.let { view ->
+            instreamAdView?.let {
+                view.removeView(it)
                 cordovaWebView.view.requestFocus()
-                onDestroy()
+            }
+            onDestroy()
             }
 
             callbackContext.success()
