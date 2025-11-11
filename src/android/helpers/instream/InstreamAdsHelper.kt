@@ -62,6 +62,8 @@ internal class InstreamAdsHelper(
 
             (cordovaWebView.view as? ViewGroup)?.let { view ->
 
+                view.isFocusable = false
+
                 instreamAdView?.let { adView ->
                     if (!view.contains(adView)) {
                         // Создаем wrapper для перехвата D-pad событий
@@ -76,6 +78,7 @@ internal class InstreamAdsHelper(
 
                             // Добавляем InstreamAdView в wrapper
                             addView(adView)
+                            adView.requestFocus()
                         }
 
                         // Добавляем wrapper в WebView
