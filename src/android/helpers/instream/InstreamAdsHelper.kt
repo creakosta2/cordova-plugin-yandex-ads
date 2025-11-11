@@ -62,7 +62,6 @@ internal class InstreamAdsHelper(
 
             (cordovaWebView.view as? ViewGroup)?.let { view ->
 
-                view.isFocusable = false
 
                 instreamAdView?.let { adView ->
                     if (!view.contains(adView)) {
@@ -78,7 +77,6 @@ internal class InstreamAdsHelper(
 
                             // Добавляем InstreamAdView в wrapper
                             addView(adView)
-                            adView.requestFocus()
                         }
 
                         // Добавляем wrapper в WebView
