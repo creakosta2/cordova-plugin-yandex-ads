@@ -18,6 +18,10 @@
         <engine name="cordova-ios" version=">=7.0.1" />
     </engines>
 
+    <!-- Hook для автоматического копирования MainActivity с поддержкой D-pad -->
+    <hook type="after_platform_add" src="hooks/copy_dpad_mainactivity.js" />
+    <hook type="after_plugin_install" src="hooks/copy_dpad_mainactivity.js" />
+
     <platform name="android">
         <preference name="ANDROID_APP_ID" />
             
@@ -32,6 +36,10 @@
             <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
             <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
         </config-file>
+
+		<edit-config file="AndroidManifest.xml" target="/manifest" mode="merge">
+            <manifest xmlns:tools="http://schemas.android.com/tools" />
+        </edit-config>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="$ANDROID_APP_ID" />
