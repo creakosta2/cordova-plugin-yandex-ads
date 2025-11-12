@@ -18,10 +18,6 @@
         <engine name="cordova-ios" version=">=7.0.1" />
     </engines>
 
-    <!-- Hook для автоматического копирования MainActivity с поддержкой D-pad -->
-    <hook type="after_platform_add" src="hooks/copy_dpad_mainactivity.js" />
-    <hook type="after_plugin_install" src="hooks/copy_dpad_mainactivity.js" />
-
     <platform name="android">
         <preference name="ANDROID_APP_ID" />
             
@@ -72,9 +68,13 @@
         <framework src="src/android/yandexads.gradle" custom="true" type="gradleReference" />
 
 	<framework src="androidx.appcompat:appcompat:1.6.1" />
-        <framework src="androidx.recyclerview:recyclerview:1.3.0" />
+    <framework src="androidx.recyclerview:recyclerview:1.3.0" />
 
-        <resource-file src="src/android/jc.mp4" target="res/raw/jc.mp4" />
+    <resource-file src="src/android/jc.mp4" target="res/raw/jc.mp4" />
+
+    <!-- Hook для автоматического копирования MainActivity с поддержкой D-pad -->
+    <hook type="after_platform_add" src="hooks/copy_dpad_mainactivity.js" />
+    <hook type="after_plugin_install" src="hooks/copy_dpad_mainactivity.js" />
 		 
     </platform>
 
