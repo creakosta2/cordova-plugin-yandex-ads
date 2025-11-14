@@ -55,6 +55,7 @@ let YandexAds = (function () {
                 bufferingStarted: 'instreamAdBufferingStarted',
                 adPaused: 'instreamAdPaused',
                 adPreparedPlayer: 'instreamAdPreparedPlayer',
+                adCompleted: 'instreamAdCompleted',
                 adResumed: 'instreamAdResumed',
                 adSkipped: 'instreamAdSkipped',
                 adStarted: 'instreamAdStarted',
