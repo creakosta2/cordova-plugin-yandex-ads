@@ -267,10 +267,6 @@ internal class InstreamAdsHelper(
         override fun onAdBufferingStarted(videoAd: VideoAd) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_BUFFERING_STARTED)
         }
-        override fun onAdCompleted(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_COMPLETED)
-
-        }
 
         override fun onAdPaused(videoAd: VideoAd) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_PAUSED)
