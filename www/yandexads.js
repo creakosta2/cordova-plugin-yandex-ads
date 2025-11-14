@@ -53,7 +53,6 @@ let YandexAds = (function () {
                 // Player events
                 bufferingFinished: 'instreamAdBufferingFinished',
                 bufferingStarted: 'instreamAdBufferingStarted',
-                adCompleted: 'instreamAdCompleted',
                 adPaused: 'instreamAdPaused',
                 adPreparedPlayer: 'instreamAdPreparedPlayer',
                 adResumed: 'instreamAdResumed',
