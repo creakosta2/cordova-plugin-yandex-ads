@@ -100,7 +100,6 @@ internal object ConstantsEvents {
     // Instream player events
     const val EVENT_INSTREAM_AD_BUFFERING_FINISHED = "instreamAdBufferingFinished"
     const val EVENT_INSTREAM_AD_BUFFERING_STARTED = "instreamAdBufferingStarted"
-    const val EVENT_INSTREAM_AD_COMPLETED = "instreamAdCompleted"
     const val EVENT_INSTREAM_AD_PAUSED = "instreamAdPaused"
     const val EVENT_INSTREAM_AD_PREPARED_PLAYER = "instreamAdPreparedPlayer"
     const val EVENT_INSTREAM_AD_RESUMED = "instreamAdResumed"
