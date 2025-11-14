@@ -249,16 +249,10 @@ internal class InstreamAdsHelper(
 
         override fun onError(reason: String) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_ERROR, reason)
-            cordova.activity.runOnUiThread {
-                hideAndCleanup()
-            }
         }
 
         override fun onInstreamAdCompleted() {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_COMPLEATED)
-            cordova.activity.runOnUiThread {
-                hideAndCleanup()
-            }
         }
 
         override fun onInstreamAdPrepared() {
@@ -273,13 +267,9 @@ internal class InstreamAdsHelper(
         override fun onAdBufferingStarted(videoAd: VideoAd) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_BUFFERING_STARTED)
         }
-
         override fun onAdCompleted(videoAd: VideoAd) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_COMPLETED)
 
-            cordova.activity.runOnUiThread {
-                hideAndCleanup()
-            }
         }
 
         override fun onAdPaused(videoAd: VideoAd) {
@@ -296,10 +286,6 @@ internal class InstreamAdsHelper(
 
         override fun onAdSkipped(videoAd: VideoAd) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_SKIPPED)
-
-            cordova.activity.runOnUiThread {
-                hideAndCleanup()
-            }
         }
 
         override fun onAdStarted(videoAd: VideoAd) {
@@ -313,9 +299,6 @@ internal class InstreamAdsHelper(
         override fun onError(videoAd: VideoAd, error: InstreamAdPlayerError) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_ERROR, error.reason.toString())
 
-            cordova.activity.runOnUiThread {
-                hideAndCleanup()
-            }
         }
 
         override fun onVolumeChanged(videoAd: VideoAd, volume: Float) {
