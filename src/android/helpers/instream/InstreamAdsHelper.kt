@@ -12,9 +12,6 @@ import com.yandex.mobile.ads.instream.InstreamAdLoadListener
 import com.yandex.mobile.ads.instream.InstreamAdLoader
 import com.yandex.mobile.ads.instream.InstreamAdRequestConfiguration
 import com.yandex.mobile.ads.instream.player.ad.InstreamAdView
-import com.yandex.mobile.ads.instream.player.ad.InstreamAdPlayerListener
-import com.yandex.mobile.ads.instream.player.ad.error.InstreamAdPlayerError
-import com.yandex.mobile.ads.video.playback.model.VideoAd
 import io.luzh.cordova.plugin.helpers.BaseAdsHelper
 import io.luzh.cordova.plugin.helpers.instream.ad.SampleInstreamAdPlayer
 import io.luzh.cordova.plugin.helpers.instream.content.ContentVideoPlayer
@@ -235,7 +232,7 @@ internal class InstreamAdsHelper(
         }
     }
 
-    inner class InstreamAdEventLogger : InstreamAdLoadListener, InstreamAdListener, InstreamAdPlayerListener {
+    inner class InstreamAdEventLogger : InstreamAdLoadListener, InstreamAdListener {
         override fun onInstreamAdFailedToLoad(reason: String) {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_FAILED_TO_LOAD, reason)
             isLoaded = false
@@ -257,52 +254,6 @@ internal class InstreamAdsHelper(
 
         override fun onInstreamAdPrepared() {
             emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_PREPARED)
-        }
-
-        // InstreamAdPlayerListener methods
-        override fun onAdBufferingFinished(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_BUFFERING_FINISHED)
-        }
-
-        override fun onAdBufferingStarted(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_BUFFERING_STARTED)
-        }
-
-        override fun onAdCompleted(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_COMPLETED)
-        }
-
-        override fun onAdPaused(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_PAUSED)
-        }
-
-        override fun onAdPrepared(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_PREPARED_PLAYER)
-        }
-
-        override fun onAdResumed(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_RESUMED)
-        }
-
-        override fun onAdSkipped(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_SKIPPED)
-        }
-
-        override fun onAdStarted(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_STARTED)
-        }
-
-        override fun onAdStopped(videoAd: VideoAd) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_STOPPED)
-        }
-
-        override fun onError(videoAd: VideoAd, error: InstreamAdPlayerError) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_ERROR, error.reason.toString())
-
-        }
-
-        override fun onVolumeChanged(videoAd: VideoAd, volume: Float) {
-            emitWindowEvent(ConstantsEvents.EVENT_INSTREAM_AD_VOLUME_CHANGED, volume.toString())
         }
     }
 }
