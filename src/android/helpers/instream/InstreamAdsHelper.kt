@@ -113,6 +113,8 @@ internal class InstreamAdsHelper(
                     KeyEvent.KEYCODE_DPAD_RIGHT -> android.view.View.FOCUS_RIGHT
                     KeyEvent.KEYCODE_DPAD_UP -> android.view.View.FOCUS_UP
                     KeyEvent.KEYCODE_DPAD_DOWN -> android.view.View.FOCUS_DOWN
+                    KeyEvent.KEYCODE_BACK -> return true
+                    KeyEvent.KEYCODE_BUTTON_B -> return true
                     else -> null
                 }
 
