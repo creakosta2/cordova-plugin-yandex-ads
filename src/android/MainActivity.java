@@ -58,10 +58,19 @@ public class MainActivity extends CordovaActivity
     public boolean dispatchKeyEvent(KeyEvent event) {
         // Проверяем, является ли это D-pad событием
         boolean isDpadEvent = event.getKeyCode() == KeyEvent.KEYCODE_DPAD_CENTER ||
+                              event.getKeyCode() == KeyEvent.KEYCODE_BUTTON_SELECT || 
+                              event.getKeyCode() == KeyEvent.KEYCODE_BUTTON_A ||
+                              event.getKeyCode() == KeyEvent.KEYCODE_ENTER ||
+                              event.getKeyCode() == KeyEvent.KEYCODE_NUMPAD_ENTER ||
+                              // кнопки выбора
+                              event.getKeyCode() == KeyEvent.KEYCODE_BACK ||
+                              event.getKeyCode() == KeyEvent.KEYCODE_BUTTON_B ||
+                              // кнопки назад
                               event.getKeyCode() == KeyEvent.KEYCODE_DPAD_UP ||
                               event.getKeyCode() == KeyEvent.KEYCODE_DPAD_DOWN ||
                               event.getKeyCode() == KeyEvent.KEYCODE_DPAD_LEFT ||
                               event.getKeyCode() == KeyEvent.KEYCODE_DPAD_RIGHT;
+                              // кнопки навигации
 
         if (isDpadEvent) {
             Log.d(TAG, "MainActivity: D-pad event keyCode=" + event.getKeyCode());
