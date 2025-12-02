@@ -135,7 +135,7 @@ internal class BannerAdsHelper(
 
                 val contentView = cordova.activity.findViewById<ViewGroup>(R.id.content)
                 if (contentView != null) {
-                    contentView.bringToFront()
+                    //contentView.bringToFront()
                     contentView.requestLayout()
                     //contentView.requestFocus()
                 }
